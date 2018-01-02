@@ -17,7 +17,7 @@
 
 .highlighted {
     border: yellow solid 3px !important;
-    font-size: 1.2em;
+    transform: scale(1.1);
     float: inherit;
 }
 
@@ -32,5 +32,5 @@
     border-radius: 10px;
     border: black solid 3px;
     float: left;
+    transition: all .07s;
 }
-

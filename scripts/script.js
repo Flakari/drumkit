@@ -1,3 +1,28 @@
+window.addEventListener("keydown", playSound);
+
+function playSound(e) {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"`);
+    const key = document.querySelector(`.button[data-key="${e.keyCode}"`);
+
+    if(!audio) return;
+
+    audio.currentTime = 0;
+    audio.play();
+
+    key.classList.add("highlighted");
+}
+
+function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    this.classList.remove("highlighted");
+}
+
+const button = document.querySelectorAll(".button");
+button.forEach(button => button.addEventListener('transitionend', removeTransition));
+
+//Old script kept for posterity post refactoring
+
+/*
 const aButton = document.querySelector("#button-a");
 const sButton = document.querySelector("#button-s");
 const dButton = document.querySelector("#button-d");
@@ -89,15 +114,4 @@ document.body.addEventListener("keyup", function(e) {
         lButton.classList.remove("highlighted");
     }
 });
-
-/*document.body.addEventListener("keydown", function(e) {
-    if (e.keyCode == KEYCODE_S) {
-        sButton.classList.add("highlighted");
-    }
-});
-
-document.body.addEventListener("keyup", function(e) {
-    if (e.keyCode == KEYCODE_S) {
-        sButton.classList.remove("highlighted");
-    }
-});*/
+*/
